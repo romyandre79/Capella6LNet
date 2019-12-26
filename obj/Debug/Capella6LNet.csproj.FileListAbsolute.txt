@@ -1,0 +1,8 @@
+C:\WinNMP\WWW\Capella6LNet\bin\Debug\Capella6LNet.dll
+C:\WinNMP\WWW\Capella6LNet\bin\Debug\Capella6LNet.pdb
+C:\WinNMP\WWW\Capella6LNet\obj\Debug\Capella6LNet.csprojAssemblyReference.cache
+C:\WinNMP\WWW\Capella6LNet\obj\Debug\Capella6LNet.dll
+C:\WinNMP\WWW\Capella6LNet\obj\Debug\Capella6LNet.pdb
+C:\WinNMP\WWW\Capella6LNet\bin\Debug\Newtonsoft.Json.dll
+C:\WinNMP\WWW\Capella6LNet\bin\Debug\Newtonsoft.Json.xml
+C:\WinNMP\WWW\Capella6LNet\obj\Debug\Capella6LNet.csproj.CopyComplete
