@@ -7,8 +7,10 @@ using Newtonsoft.Json;
 
 namespace Capella6LNet
 {
+  [JsonObject(MemberSerialization.OptIn)]
   public class LanguageListResponse : BaseResponse
   {
+    [JsonProperty]
     public List<Language> Rows { get; set; }
   }
 }

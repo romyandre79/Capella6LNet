@@ -8,9 +8,9 @@ using Newtonsoft.Json;
 namespace Capella6LNet
 {
   [JsonObject(MemberSerialization.OptIn)]
-  public class MenuAccessRightResponse : BaseResponse
+  public class MenuAccessListResponse : BaseResponse
   {
     [JsonProperty]
-    public MenuAccessRight Rows { get; set; }
+    public List<MenuAccess> Rows { get; set; }
   }
 }

@@ -58,16 +58,22 @@ namespace Capella6LNet
       }
       catch (Exception e)
       {
-        return ResponseData.Append(e.Message);
+        return ResponseData.Append("Error: "+e.Message);
       }      
     }
 
     public static string GetMessageAPI(Host MyHost, string Messages)
     {
       StringBuilder ResponseData = GetDataAPI(MyHost, "sysadm/getcatalog", new StringBuilder("messages=" + Messages));
-      // JsonTextReader reader = new JsonTextReader(new StringReader(ResponseData.ToString()));
-      BaseResponse baseResponse = JsonConvert.DeserializeObject<BaseResponse>(ResponseData.ToString());
-      return baseResponse.Msg;
+      if (ResponseData.ToString().Contains("Error") == true)
+      {
+        return ResponseData.ToString();
+      }
+      else
+      {
+        BaseResponse baseResponse = JsonConvert.DeserializeObject<BaseResponse>(ResponseData.ToString());
+        return baseResponse.Msg;
+      }
     }
 
     public static string GetExternalIPAddress(Host MyHost)
@@ -137,9 +143,18 @@ namespace Capella6LNet
         MyUser.ThemeName = userResponse.Rows.ThemeName;
         MyUser.UserName = userResponse.Rows.UserName;
         MyUser.RealName = userResponse.Rows.RealName;
+        MyUser.UserAccessId = userResponse.Rows.UserAccessId;
         ret = true;
       }
       return ret;
+    }
+
+    public static string GetDataUser(Host MyHost, User MyUser)
+    {
+      string s = MyHost.HostIPGeo + GetExternalIPAddress(MyHost);
+      StringBuilder ResponseData = GetDataAPI(MyHost, s, new StringBuilder());
+      IPGeoResponse response = JsonConvert.DeserializeObject<IPGeoResponse>(ResponseData.ToString());
+      return MyUser.UserName + "," + GetExternalIPAddress(MyHost) + "," + GetIpAddrList() + "," + response.lat + "," + response.lon;
     }
 
     public static void GetAllMenus()
